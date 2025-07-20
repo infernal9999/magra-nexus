@@ -1,23 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Magra Nexus</title>
     <style>
-        body {
+        html, body {
             margin: 0;
             padding: 0;
+            height: 100%;
             overflow: hidden;
             font-family: Arial, sans-serif;
-            overflow-x: hidden;
         }
-         iframe {
+
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+
+        iframe {
+            flex: 1;
             width: 100%;
-            height: calc(100vh - 120px); /* Adjust for header/footer height */
             border: none;
             display: block;
         }
+
         #loading {
             position: fixed;
             top: 0;
@@ -31,6 +38,7 @@
             align-items: center;
             z-index: 100;
         }
+
         .spinner {
             border: 5px solid #f3f3f3;
             border-top: 5px solid #3498db;
@@ -40,6 +48,7 @@
             animation: spin 1s linear infinite;
             margin-bottom: 15px;
         }
+
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
@@ -53,13 +62,19 @@
     </div>
 
     <iframe 
-        src="https://script.google.com/macros/s/AKfycbz5x4tw-hsJsqgp2xNC4F9_jtsA5BzChp-Dr9yc4JfIfSjGpAjvosgfgvSV4n6o0-lMJA/exec" allowfullscreen sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
+        src="https://script.google.com/macros/s/AKfycbz5x4tw-hsJsqgp2xNC4F9_jtsA5BzChp-Dr9yc4JfIfSjGpAjvosgfgvSV4n6o0-lMJA/exec"
+        allowfullscreen
+        sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
+        onload="document.getElementById('loading').style.display = 'none';"
     ></iframe>
 
     <script>
-        // Hide loader after 10 seconds even if iframe fails to load
-        setTimeout(function() {
-            document.getElementById('loading').style.display = 'none';
+        // Fallback: Hide loader after 10 seconds if iframe fails to load
+        setTimeout(() => {
+            const loader = document.getElementById('loading');
+            if (loader.style.display !== 'none') {
+                loader.style.display = 'none';
+            }
         }, 10000);
     </script>
 </body>
