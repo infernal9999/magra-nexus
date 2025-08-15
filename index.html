@@ -6,24 +6,28 @@
     <title>Magra Nexus</title>
     <link rel="icon" href="https://lh3.googleusercontent.com/pw/AP1GczNIfP0lZLsiXw-gjjm4ctp4LUSjFrZPOA-_kJkjEqKYxxDl-9xgBfRIRPQydDqXEp6rV7o5lpbiNsaJf2pNA_9GChUlRjrP6eEvtWcucjXPW3F9nVFgZxbjZ4iGYHkQd7CIhY18LbwtLZ5yrcwKibQ=w917-h917-s-no-gm?authuser=0" type="image/png" />
     
+    <!-- Preload critical assets -->
+    <link rel="preload" href="https://lh3.googleusercontent.com/pw/AP1GczNIfP0lZLsiXw-gjjm4ctp4LUSjFrZPOA-_kJkjEqKYxxDl-9xgBfRIRPQydDqXEp6rV7o5lpbiNsaJf2pNA_9GChUlRjrP6eEvtWcucjXPW3F9nVFgZxbjZ4iGYHkQd7CIhY18LbwtLZ5yrcwKibQ=w917-h917-s-no-gm?authuser=0" as="image" fetchpriority="high">
+    <link rel="preload" href="https://script.google.com/macros/s/AKfycbxebouEGkrGlk9SCyi0tO4Kpd4PDwPJQ6SUsPYieBMC_FHCd6EmLW9NtMYLQQDC2qRoPw/exec" as="document">
+    
     <style>
         /* Reset margin and padding */
         html, body {
             margin: 0;
             padding: 0;
             height: 100%;
-            overflow: hidden; /* Prevent any scrolling */
+            overflow: hidden;
         }
 
         /* Make iframe full screen */
         iframe {
             width: 100%;
-            height: 100vh; /* Full viewport height */
+            height: 100vh;
             border: none;
             display: block;
         }
 
-        /* Loading screen style - Updated with animation styles */
+        /* Loading screen style */
         #loading {
             position: fixed;
             top: 0;
@@ -40,19 +44,12 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-        /* Animation styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
         .container {
             text-align: center;
             max-width: 800px;
             padding: 30px;
             z-index: 2;
-            margin-top: 80px; /* Push entire content down */
+            margin-top: 80px;
         }
         
         .logo {
@@ -82,7 +79,7 @@
         .subtitle {
             font-size: 1.2rem;
             opacity: 0.8;
-            margin-bottom: 30px; /* Reduced from 40px */
+            margin-bottom: 30px;
             font-weight: 300;
         }
         
@@ -92,7 +89,7 @@
             background: rgba(255, 255, 255, 0.1);
             border-radius: 10px;
             overflow: hidden;
-            margin: 30px auto; /* Reduced from 40px */
+            margin: 30px auto;
             max-width: 500px;
         }
         
@@ -108,7 +105,7 @@
         .train-animation {
             position: relative;
             height: 150px;
-            margin: 20px auto; /* Reduced from 50px */
+            margin: 20px auto;
             max-width: 500px;
             overflow: hidden;
         }
@@ -134,27 +131,18 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
         
-        .train::before {
+        .train::before, .train::after {
             content: "";
             position: absolute;
             top: 15px;
-            left: 10px;
             width: 25px;
             height: 25px;
             background: rgba(255, 255, 255, 0.7);
             border-radius: 50%;
         }
         
-        .train::after {
-            content: "";
-            position: absolute;
-            top: 15px;
-            left: 45px;
-            width: 25px;
-            height: 25px;
-            background: rgba(255, 255, 255, 0.7);
-            border-radius: 50%;
-        }
+        .train::before { left: 10px; }
+        .train::after { left: 45px; }
         
         .train-window {
             position: absolute;
@@ -196,7 +184,7 @@
         
         .progress-text {
             font-size: 1.1rem;
-            margin-top: 15px; /* Reduced from 20px */
+            margin-top: 15px;
             letter-spacing: 1px;
         }
         
@@ -204,7 +192,7 @@
             font-weight: bold;
             font-size: 1.3rem;
             color: #ffd700;
-            margin-bottom: 15px; /* Added to create space before train */
+            margin-bottom: 15px;
         }
         
         .pulse {
@@ -249,6 +237,15 @@
             animation: signal-green 3s infinite 2s;
         }
         
+        .loading-dots span {
+            display: inline-block;
+            animation: dot-bounce 1.5s infinite;
+            opacity: 0.6;
+        }
+        
+        .loading-dots span:nth-child(2) { animation-delay: 0.2s; }
+        .loading-dots span:nth-child(3) { animation-delay: 0.4s; }
+
         /* Animations */
         @keyframes loading {
             0% { left: -30%; }
@@ -294,25 +291,6 @@
             66%, 100% { background: #10b981; box-shadow: 0 0 10px #10b981; }
         }
         
-        .loading-dots {
-            display: inline-block;
-            margin-left: 5px;
-        }
-        
-        .loading-dots span {
-            display: inline-block;
-            animation: dot-bounce 1.5s infinite;
-            opacity: 0.6;
-        }
-        
-        .loading-dots span:nth-child(2) {
-            animation-delay: 0.2s;
-        }
-        
-        .loading-dots span:nth-child(3) {
-            animation-delay: 0.4s;
-        }
-        
         @keyframes dot-bounce {
             0%, 100% { transform: translateY(0); opacity: 0.6; }
             50% { transform: translateY(-5px); opacity: 1; }
@@ -323,14 +301,14 @@
             h1 { font-size: 2.5rem; }
             .train-animation { height: 120px; }
             .railway-signal { right: 5%; }
-            .container { margin-top: 60px; } /* Adjusted for mobile */
+            .container { margin-top: 60px; }
         }
         
         @media (max-width: 480px) {
             h1 { font-size: 2rem; }
             .subtitle { font-size: 1rem; }
-            .container { padding: 20px; margin-top: 40px; } /* Further adjusted for small mobile */
-            .progress-percentage { margin-bottom: 10px; } /* Adjusted spacing */
+            .container { padding: 20px; margin-top: 40px; }
+            .progress-percentage { margin-bottom: 10px; }
         }
     </style>
 </head>
@@ -344,7 +322,14 @@
         
         <div class="container">
             <div class="logo">
-                <img src="https://lh3.googleusercontent.com/pw/AP1GczNIfP0lZLsiXw-gjjm4ctp4LUSjFrZPOA-_kJkjEqKYxxDl-9xgBfRIRPQydDqXEp6rV7o5lpbiNsaJf2pNA_9GChUlRjrP6eEvtWcucjXPW3F9nVFgZxbjZ4iGYHkQd7CIhY18LbwtLZ5yrcwKibQ=w917-h917-s-no-gm?authuser=0" alt="Magra Station Logo">
+                <img 
+                    src="https://lh3.googleusercontent.com/pw/AP1GczNIfP0lZLsiXw-gjjm4ctp4LUSjFrZPOA-_kJkjEqKYxxDl-9xgBfRIRPQydDqXEp6rV7o5lpbiNsaJf2pNA_9GChUlRjrP6eEvtWcucjXPW3F9nVFgZxbjZ4iGYHkQd7CIhY18LbwtLZ5yrcwKibQ=w917-h917-s-no-gm?authuser=0" 
+                    alt="Magra Station Logo"
+                    width="100"
+                    height="100"
+                    fetchpriority="high"
+                    decoding="async"
+                >
             </div>
             
             <h1>MAGRA NEXUS</h1>
@@ -379,6 +364,7 @@
         allowfullscreen
         sandbox="allow-same-origin allow-scripts allow-popups allow-forms allow-modals"
         onload="document.getElementById('loading').style.display = 'none';"
+        loading="eager"
     ></iframe>
 
     <script>
