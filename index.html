@@ -52,7 +52,7 @@
             max-width: 800px;
             padding: 30px;
             z-index: 2;
-            margin-top: 60px; /* Added to push content down */
+            margin-top: 80px; /* Push entire content down */
         }
         
         .logo {
@@ -82,7 +82,7 @@
         .subtitle {
             font-size: 1.2rem;
             opacity: 0.8;
-            margin-bottom: 40px;
+            margin-bottom: 30px; /* Reduced from 40px */
             font-weight: 300;
         }
         
@@ -92,7 +92,7 @@
             background: rgba(255, 255, 255, 0.1);
             border-radius: 10px;
             overflow: hidden;
-            margin: 40px auto;
+            margin: 30px auto; /* Reduced from 40px */
             max-width: 500px;
         }
         
@@ -106,12 +106,9 @@
         }
         
         .train-animation {
-            position: absolute; /* Changed to absolute to position independently */
-            bottom: 50px; /* Positioned at bottom */
-            left: 0;
-            right: 0;
+            position: relative;
             height: 150px;
-            margin: 0 auto;
+            margin: 20px auto; /* Reduced from 50px */
             max-width: 500px;
             overflow: hidden;
         }
@@ -199,7 +196,7 @@
         
         .progress-text {
             font-size: 1.1rem;
-            margin-top: 20px;
+            margin-top: 15px; /* Reduced from 20px */
             letter-spacing: 1px;
         }
         
@@ -207,6 +204,7 @@
             font-weight: bold;
             font-size: 1.3rem;
             color: #ffd700;
+            margin-bottom: 15px; /* Added to create space before train */
         }
         
         .pulse {
@@ -325,13 +323,14 @@
             h1 { font-size: 2.5rem; }
             .train-animation { height: 120px; }
             .railway-signal { right: 5%; }
-            .container { margin-top: 60px; } /* Adjusted for smaller screens */
+            .container { margin-top: 60px; } /* Adjusted for mobile */
         }
         
         @media (max-width: 480px) {
             h1 { font-size: 2rem; }
             .subtitle { font-size: 1rem; }
-            .container { padding: 20px; margin-top: 40px; } /* Adjusted for mobile */
+            .container { padding: 20px; margin-top: 40px; } /* Further adjusted for small mobile */
+            .progress-percentage { margin-bottom: 10px; } /* Adjusted spacing */
         }
     </style>
 </head>
@@ -362,15 +361,15 @@
                 </span>
             </p>
             <p class="progress-percentage"><span class="pulse">78</span>%</p>
-        </div>
-        
-        <div class="train-animation">
-            <div class="track"></div>
-            <div class="train">
-                <div class="train-window"></div>
-                <div class="smoke"></div>
-                <div class="smoke"></div>
-                <div class="smoke"></div>
+            
+            <div class="train-animation">
+                <div class="track"></div>
+                <div class="train">
+                    <div class="train-window"></div>
+                    <div class="smoke"></div>
+                    <div class="smoke"></div>
+                    <div class="smoke"></div>
+                </div>
             </div>
         </div>
     </div>
